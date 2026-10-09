@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="SchollLibraryMini.Web/SchollLibraryMini.Web.csproj" Id="1f624224-ddd6-45d7-9d90-a60eefd7eee8" />
+  <Project Path="SchoolLibraryMini.Data/SchoolLibraryMini.Data.csproj" Id="f0311a16-8472-49c1-b2a4-abb15b7980c6" />
 </Solution>

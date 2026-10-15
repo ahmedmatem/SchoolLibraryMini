@@ -8,7 +8,7 @@
         public Guid AuthorId { get; set; }
 
         public string ISBN { get; set; } = string.Empty;
-        public DateOnly PublicationYear { get; set; }
+        public int PublicationYear { get; set; }
         public int TotalCopies { get; set; }
 
         // Navigation properties

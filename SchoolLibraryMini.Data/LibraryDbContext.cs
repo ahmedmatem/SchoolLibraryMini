@@ -42,7 +42,7 @@ namespace SchoolLibraryMini.Data
                 entity.HasOne<Author>()
                     .WithMany(a => a.Books)
                     .HasForeignKey(b => b.AuthorId)
-                    .OnDelete(DeleteBehavior.Cascade);
+                    .OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<Loan>(entity => {

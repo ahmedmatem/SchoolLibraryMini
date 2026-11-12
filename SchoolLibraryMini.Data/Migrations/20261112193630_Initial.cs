@@ -45,7 +45,7 @@ namespace SchoolLibraryMini.Data.Migrations
                     ISBN = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
                     PublicationYear = table.Column<int>(type: "int", nullable: false),
                     TotalCopies = table.Column<int>(type: "int", nullable: false),
-                    Author = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    AuthorId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,6 +53,12 @@ namespace SchoolLibraryMini.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Books_Authors_AuthorId",
                         column: x => x.AuthorId,
+                        principalTable: "Authors",
+                        principalColumn: "AuthorId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Books_Authors_AuthorId1",
+                        column: x => x.AuthorId1,
                         principalTable: "Authors",
                         principalColumn: "AuthorId",
                         onDelete: ReferentialAction.Cascade);
@@ -88,6 +94,11 @@ namespace SchoolLibraryMini.Data.Migrations
                 name: "IX_Books_AuthorId",
                 table: "Books",
                 column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_AuthorId1",
+                table: "Books",
+                column: "AuthorId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_ISBN",

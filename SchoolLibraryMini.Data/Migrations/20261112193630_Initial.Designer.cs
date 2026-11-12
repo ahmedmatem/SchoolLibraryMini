@@ -12,7 +12,7 @@ using SchoolLibraryMini.Data;
 namespace SchoolLibraryMini.Data.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20261015182219_Initial")]
+    [Migration("20261112193630_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -47,11 +47,10 @@ namespace SchoolLibraryMini.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("AuthorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AuthorId1")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ISBN")
@@ -73,6 +72,8 @@ namespace SchoolLibraryMini.Data.Migrations
                     b.HasKey("BookId");
 
                     b.HasIndex("AuthorId");
+
+                    b.HasIndex("AuthorId1");
 
                     b.HasIndex("ISBN")
                         .IsUnique();
@@ -122,8 +123,16 @@ namespace SchoolLibraryMini.Data.Migrations
                     b.HasOne("SchoolLibraryMini.Data.Entities.Author", null)
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SchoolLibraryMini.Data.Entities.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("SchoolLibraryMini.Data.Entities.Loan", b =>

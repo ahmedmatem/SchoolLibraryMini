@@ -35,7 +35,7 @@ namespace SchoolLibraryMini.Data.Migrations
 
                     b.HasKey("AuthorId");
 
-                    b.ToTable("Authors", (string)null);
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("SchoolLibraryMini.Data.Entities.Book", b =>
@@ -44,11 +44,10 @@ namespace SchoolLibraryMini.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("AuthorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AuthorId1")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ISBN")
@@ -71,10 +70,12 @@ namespace SchoolLibraryMini.Data.Migrations
 
                     b.HasIndex("AuthorId");
 
+                    b.HasIndex("AuthorId1");
+
                     b.HasIndex("ISBN")
                         .IsUnique();
 
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("SchoolLibraryMini.Data.Entities.Loan", b =>
@@ -95,7 +96,7 @@ namespace SchoolLibraryMini.Data.Migrations
 
                     b.HasIndex("ReaderId");
 
-                    b.ToTable("Loans", (string)null);
+                    b.ToTable("Loans");
                 });
 
             modelBuilder.Entity("SchoolLibraryMini.Data.Entities.Reader", b =>
@@ -111,7 +112,7 @@ namespace SchoolLibraryMini.Data.Migrations
 
                     b.HasKey("ReaderId");
 
-                    b.ToTable("Readers", (string)null);
+                    b.ToTable("Readers");
                 });
 
             modelBuilder.Entity("SchoolLibraryMini.Data.Entities.Book", b =>
@@ -119,8 +120,16 @@ namespace SchoolLibraryMini.Data.Migrations
                     b.HasOne("SchoolLibraryMini.Data.Entities.Author", null)
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SchoolLibraryMini.Data.Entities.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("SchoolLibraryMini.Data.Entities.Loan", b =>

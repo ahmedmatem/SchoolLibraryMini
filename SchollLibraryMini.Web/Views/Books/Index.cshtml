@@ -5,6 +5,12 @@
 
 <h1>Книги в библиотеката</h1>
 
+<a asp-controller="Books"
+   asp-action="Create"
+   class="btn btn-primary">
+    Добави книга
+</a>
+
 @if (!Model.Any())
 {
     <p>Все още няма добавени книги.</p>

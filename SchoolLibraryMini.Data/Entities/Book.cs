@@ -18,7 +18,7 @@ namespace SchoolLibraryMini.Data.Entities
         public int TotalCopies { get; set; }
 
         // Navigation properties
-        public string Author { get; set; } = string.Empty;
+        public Author Author { get; set; } = null!;
 
         public ICollection<Loan> Loans { get; set; } = new List<Loan>();
     }

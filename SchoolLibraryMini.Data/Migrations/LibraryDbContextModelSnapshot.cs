@@ -35,7 +35,7 @@ namespace SchoolLibraryMini.Data.Migrations
 
                     b.HasKey("AuthorId");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Authors", (string)null);
                 });
 
             modelBuilder.Entity("SchoolLibraryMini.Data.Entities.Book", b =>
@@ -74,7 +74,7 @@ namespace SchoolLibraryMini.Data.Migrations
                     b.HasIndex("ISBN")
                         .IsUnique();
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("SchoolLibraryMini.Data.Entities.Loan", b =>
@@ -95,7 +95,7 @@ namespace SchoolLibraryMini.Data.Migrations
 
                     b.HasIndex("ReaderId");
 
-                    b.ToTable("Loans");
+                    b.ToTable("Loans", (string)null);
                 });
 
             modelBuilder.Entity("SchoolLibraryMini.Data.Entities.Reader", b =>
@@ -111,7 +111,7 @@ namespace SchoolLibraryMini.Data.Migrations
 
                     b.HasKey("ReaderId");
 
-                    b.ToTable("Readers");
+                    b.ToTable("Readers", (string)null);
                 });
 
             modelBuilder.Entity("SchoolLibraryMini.Data.Entities.Book", b =>

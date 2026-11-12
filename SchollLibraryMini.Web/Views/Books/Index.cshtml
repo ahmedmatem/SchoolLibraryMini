@@ -1,7 +1,37 @@
-﻿@{
-    ViewData["Title"] = "Books";
+﻿@model IEnumerable<SchoolLibraryMini.Data.Entities.Book>
+@{
+    ViewData["Title"] = "Книги";
 }
 
-<h1>Books controller test</h1>
+<h1>Книги в библиотеката</h1>
 
-<a href="books/create" class="btn btn-primary">Добави нова книга</a>
+@if (!Model.Any())
+{
+    <p>Все още няма добавени книги.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Заглавие</th>
+                <th>ISBN</th>
+                <th>Година</th>
+                <th>Екземпляри</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.ISBN</td>
+                    <td>@book.PublicationYear</td>
+                    <td>@book.TotalCopies</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+

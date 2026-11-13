@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchoolLibraryMini.Data\SchoolLibraryMini.Data.csproj" />
+    <ProjectReference Include="..\SchoolLibraryMini.Services\SchoolLibraryMini.Services.csproj" />
   </ItemGroup>
 
 </Project>

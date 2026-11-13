@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolLibraryMini.Data;
+using SchoolLibraryMini.Services;
+using SchoolLibraryMini.Services.Contracts;
 
 namespace SchollLibraryMini.Web
 {
@@ -14,6 +16,9 @@ namespace SchollLibraryMini.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Register the BookService
+            builder.Services.AddScoped<IBookService, BookService>();
 
             var app = builder.Build();
 

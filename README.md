@@ -64,6 +64,8 @@ flowchart TD
 
 ## Етап 5. Модели за пренос на данни и модели за формуляри (DTO и ViewModel)
 
+![Архитектура на SchoolLibraryMini: Client, Web Server, DB Server, DTO и ViewModel](docs/images/architecture-stage5.png)
+
 - Разграничаваме **ентити** (данни и връзки в базата), **DTO** (данни, които сървисът пренася) и **ViewModel** (данни за конкретна страница или форма).
 - В `SchoolLibraryMini.Services/DTOs/Books` създаваме `BookListDto` с `BookId`, `Title`, `AuthorName` и `ISBN`. Запазваме идентификатора за бъдещите страници за детайли и редакция.
 - Променяме `IBookService.GetAll()` и реализацията му да връщат `Task<List<BookListDto>>`. В сървиса използваме LINQ `Select`, за да изберем нужните полета, включително името на автора чрез `b.Author.Name`.

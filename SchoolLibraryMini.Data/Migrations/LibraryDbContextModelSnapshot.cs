@@ -47,9 +47,6 @@ namespace SchoolLibraryMini.Data.Migrations
                     b.Property<Guid>("AuthorId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AuthorId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("ISBN")
                         .IsRequired()
                         .HasMaxLength(13)
@@ -69,8 +66,6 @@ namespace SchoolLibraryMini.Data.Migrations
                     b.HasKey("BookId");
 
                     b.HasIndex("AuthorId");
-
-                    b.HasIndex("AuthorId1");
 
                     b.HasIndex("ISBN")
                         .IsUnique();
@@ -117,15 +112,9 @@ namespace SchoolLibraryMini.Data.Migrations
 
             modelBuilder.Entity("SchoolLibraryMini.Data.Entities.Book", b =>
                 {
-                    b.HasOne("SchoolLibraryMini.Data.Entities.Author", null)
+                    b.HasOne("SchoolLibraryMini.Data.Entities.Author", "Author")
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("SchoolLibraryMini.Data.Entities.Author", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -39,10 +39,10 @@ namespace SchoolLibraryMini.Data
                 entity.HasIndex(b => b.ISBN).IsUnique();
 
                 // One Author has many Books
-                entity.HasOne<Author>()
-                    .WithMany(a => a.Books)
-                    .HasForeignKey(b => b.AuthorId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                //entity.HasOne<Author>()
+                //    .WithMany(a => a.Books)
+                //    .HasForeignKey(b => b.AuthorId)
+                //    .OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<Loan>(entity => {

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolLibraryMini.Data.Entities
 {
@@ -7,6 +8,7 @@ namespace SchoolLibraryMini.Data.Entities
         public Guid BookId { get; set; }
         public string Title { get; set; } = string.Empty;
 
+        [ForeignKey(nameof(Author))]
         public Guid AuthorId { get; set; }
 
         [Required]
